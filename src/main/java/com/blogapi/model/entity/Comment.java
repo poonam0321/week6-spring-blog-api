@@ -1,17 +1,7 @@
 package com.blogapi.model.entity;
 
 import jakarta.persistence.*;
-import jakarta.validation.constraints.Email;
-import jakarta.validation.constraints.NotBlank;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
 
-@Getter
-@Setter
-@NoArgsConstructor
-@AllArgsConstructor
 @Entity
 @Table(name = "comments")
 public class Comment {
@@ -20,17 +10,37 @@ public class Comment {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @NotBlank(message = "Name is required")
+    @Column(nullable = false)
     private String name;
 
-    @NotBlank(message = "Email is required")
-    @Email(message = "Email should be valid")
+    @Column(nullable = false)
     private String email;
 
-    @NotBlank(message = "Body is required")
+    @Column(nullable = false)
     private String body;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "post_id", nullable = false)
     private Post post;
+
+    public Comment() {}
+
+    public Comment(Long id, String name, String email, String body, Post post) {
+        this.id = id;
+        this.name = name;
+        this.email = email;
+        this.body = body;
+        this.post = post;
+    }
+
+    public Long getId() { return id; }
+    public void setId(Long id) { this.id = id; }
+    public String getName() { return name; }
+    public void setName(String name) { this.name = name; }
+    public String getEmail() { return email; }
+    public void setEmail(String email) { this.email = email; }
+    public String getBody() { return body; }
+    public void setBody(String body) { this.body = body; }
+    public Post getPost() { return post; }
+    public void setPost(Post post) { this.post = post; }
 }

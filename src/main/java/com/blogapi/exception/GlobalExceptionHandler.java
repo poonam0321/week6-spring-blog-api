@@ -18,14 +18,14 @@ public class GlobalExceptionHandler {
     @ExceptionHandler(ResourceNotFoundException.class)
     public ResponseEntity<ApiResponse<Object>> handleResourceNotFoundException(ResourceNotFoundException exception,
                                                                         WebRequest webRequest) {
-        ApiResponse<Object> apiResponse = new ApiResponse<>(false, exception.getMessage(), null);
+        ApiResponse<Object> apiResponse = new ApiResponse<Object>(false, exception.getMessage(), null);
         return new ResponseEntity<>(apiResponse, HttpStatus.NOT_FOUND);
     }
 
     @ExceptionHandler(BlogAPIException.class)
     public ResponseEntity<ApiResponse<Object>> handleBlogAPIException(BlogAPIException exception,
                                                                WebRequest webRequest) {
-        ApiResponse<Object> apiResponse = new ApiResponse<>(false, exception.getMessage(), null);
+        ApiResponse<Object> apiResponse = new ApiResponse<Object>(false, exception.getMessage(), null);
         return new ResponseEntity<>(apiResponse, HttpStatus.BAD_REQUEST);
     }
 
@@ -44,7 +44,7 @@ public class GlobalExceptionHandler {
     @ExceptionHandler(Exception.class)
     public ResponseEntity<ApiResponse<Object>> handleGlobalException(Exception exception,
                                                               WebRequest webRequest) {
-        ApiResponse<Object> apiResponse = new ApiResponse<>(false, exception.getMessage(), null);
+        ApiResponse<Object> apiResponse = new ApiResponse<Object>(false, exception.getMessage(), null);
         return new ResponseEntity<>(apiResponse, HttpStatus.INTERNAL_SERVER_ERROR);
     }
 }

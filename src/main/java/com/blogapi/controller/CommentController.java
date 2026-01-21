@@ -48,6 +48,6 @@ public class CommentController {
     public ResponseEntity<ApiResponse<Object>> deleteComment(@PathVariable(value = "postId") Long postId,
                                                 @PathVariable(value = "id") Long commentId) {
         commentService.deleteComment(postId, commentId);
-        return new ResponseEntity<>(new ApiResponse<>(true, "Comment deleted successfully", null), HttpStatus.OK);
+        return new ResponseEntity<>(new ApiResponse<Object>(true, "Comment deleted successfully", null), HttpStatus.OK);
     }
 }
